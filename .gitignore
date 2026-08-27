@@ -1,0 +1,13 @@
+# Nichts Geheimes ins Repo
+*.envrc
+.env
+.env.*
+*api_key*
+*_key
+*.pem
+credentials*
+secrets*
+.DS_Store
+# Arbeitsergebnisse der Rollen bleiben lokal
+work/
+out/
