@@ -3,7 +3,7 @@
 # damit Repo und Profil nicht auseinanderlaufen.
 #
 #   ./install.sh                      # nutzt $CLAUDE_CONFIG_DIR, sonst ~/.claude
-#   CLAUDE_CONFIG_DIR=~/.claude-korus ./install.sh
+#   CLAUDE_CONFIG_DIR=~/.claude ./install.sh
 set -euo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CFG="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
