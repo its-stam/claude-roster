@@ -1,73 +1,76 @@
 # claude-roster
 
-Fünf Rollen für Claude Code. Jede Rolle besitzt genau ein Ergebnis, keine besitzt eine Aufgabenliste. Gebaut am 27.08.2026, nachdem ein X-Post dasselbe für xAI-Agenten beschrieben hat. Hier läuft es auf Claude Code, ohne fremden Anbieter.
+Five role agents, each owning exactly one outcome and fenced by what it must never do; one goal in, one folder of five deliverables out.
 
-## Die fünf
+## Results (`./test.sh`)
 
-| Rolle | Besitzt | Zaun |
+| What | Number |
+|---|---|
+| Role charters | 5 of 5 |
+| Assertions in the test run | 47, all passing |
+| Symlinks after `install.sh` | 3 of 3 (first run and repeat run identical) |
+| Work folders created | 6 of 6 |
+
+## The five
+
+| Role | Owns | Fence |
 |---|---|---|
-| mara | findet Nachfrage: Jobs, Direktkunden, Abnehmer | kontaktiert nie |
-| cole | schreibt an jeden gefundenen Namen | sendet nie |
-| rina | macht Sichtbares: Case Studies, Portfolio, Diagramme | publiziert nie |
-| vince | Posteingang, Entwürfe, Nachfass-Liste | sendet und löscht nie |
-| owen | zählt die Woche: Pipeline, Abos, Fixkosten | zahlt und kündigt nie |
+| mara | finds demand: jobs, direct clients, buyers | never contacts |
+| cole | writes to every name found | never sends |
+| rina | makes it visible: case studies, portfolio, diagrams | never publishes |
+| vince | inbox, drafts, follow-up list | never sends or deletes |
+| owen | counts the week: pipeline, subscriptions, fixed costs | never pays or cancels |
 
-Am Ende jeder Charter steht eine Routing-Zeile. Deshalb muss nichts verdrahtet werden: Namen zu mara, Anschreiben zu cole, Bilder zu rina, Antworten zu vince, Zahlen zu owen.
+Each charter ends with a routing line, so nothing needs wiring: names to mara, outreach to cole, visuals to rina, replies to vince, numbers to owen.
 
-## Installieren
+## Charter vs. message
+
+A charter is what still holds true in a month: scope, finished outcome, fence. Write it once, touch it again only when a durable boundary or responsibility changes. It lives in the agent file (`agents/roster/*.md`).
+
+Today's work goes into the message, five fields:
+
+```
+outcome:      what is finished at the end
+sources:      which files, pages, accounts
+constraints:  what to avoid, what to ask first
+deliverable:  which form, which path
+review point: where to stop and present
+```
+
+Missing a field gets a follow-up question instead of a result.
+
+## Fence
+
+Sending, money, publishing, deleting, agreeing stays with the human. The fence line in every charter is the second lock next to Claude Code's own permission prompt. One approval covers exactly one action and does not undo anything already done.
+
+## Setup
 
 ```bash
-git clone git@github.com:its-stam/claude-roster.git
+git clone <repo-url>
 cd claude-roster
 CLAUDE_CONFIG_DIR=~/.claude ./install.sh
 ```
 
-Setzt drei Symlinks (`agents/roster`, `skills/roster`, `roster`) und legt die Arbeitsordner an. Ein anderer Arbeitsordner geht über `ROSTER_WORKDIR`.
+Creates three symlinks (`agents/roster`, `skills/roster`, `roster`) into your Claude Code profile and creates the work folders. `CLAUDE_CONFIG_DIR` defaults to `~/.claude`; a different work folder goes through `ROSTER_WORKDIR` (default `~/work/roster`). Run `/roster <goal>` in Claude Code afterward.
 
-## Benutzen
+No key ships in the repo, and none belongs in it. `roster/engine-swap.sh` swaps subagent runs onto an alternative, Anthropic-API-compatible engine and reads the key at runtime from a `chmod 600` file — see `README.de.md` for the exact commands.
 
-`/roster <ziel>` verteilt ein Ziel an die Owner, eine Stufe ein Owner, und sammelt alles in einem Ordner ein.
-
-Charter und Nachricht sind zwei Dinge. Die Charter steht in der Agent-Datei und gilt in einem Monat noch: Bereich, fertiges Ergebnis, Zaun. Die Tagesarbeit geht in die Nachricht und trägt fünf Felder:
+## Files
 
 ```
-outcome:      was am Ende fertig ist
-sources:      welche Dateien, Seiten, Accounts
-constraints:  was zu vermeiden ist, was vorher zu fragen ist
-deliverable:  welche Form, welcher Pfad
-review point: wo gestoppt und vorgelegt wird
-```
-
-Fehlt ein Feld, kommt die Rückfrage statt des Ergebnisses.
-
-## Grenze
-
-Senden, Geld, Publizieren, Löschen, Zustimmen bleibt beim Menschen. Die Zaun-Zeile in jeder Charter ist der zweite Riegel neben dem Permission-Prompt von Claude Code. Eine Freigabe deckt genau eine Aktion und dreht nichts zurück, was schon passiert ist.
-
-## Schlüssel
-
-Im Repo liegt keiner, und es gehört auch keiner hinein. `roster/engine-kimi-k3.sh` biegt Worker-Läufe auf Kimi K3 um und liest den Schlüssel zur Laufzeit aus einer Datei mit `chmod 600`:
-
-```bash
-mkdir -p ~/.config/kimi
-printf '%s' 'DEIN_KEY' > ~/.config/kimi/code_api_key
-chmod 600 ~/.config/kimi/code_api_key
-source roster/engine-kimi-k3.sh code     # zurück: ... off
-```
-
-Die `.gitignore` hält Schlüsseldateien, Zugangsdaten und die Arbeitsergebnisse der Rollen draußen.
-
-## Dateien
-
-```
-agents/roster/*.md    fünf Charters
+agents/roster/*.md      five charters
 skills/roster/SKILL.md  /roster
-roster/ROSTER.md      Board, Übersetzung des Vorbilds auf Claude Code
-roster/schichten.md   wiederkehrende Läufe für /schedule und /loop
-roster/engine-kimi-k3.sh  Engine-Umschalter
-install.sh            Symlinks ins Profil
+roster/ROSTER.md        board, translation of the source idea onto Claude Code
+roster/schichten.md     recurring runs for /schedule and /loop
+roster/engine-swap.sh   engine switcher
+install.sh              symlinks into the profile
+tests/test_roster.sh    counting assertions, run via ./test.sh
 ```
 
-## Neue Rolle
+## New role
 
-Nur bei wiederkehrender Arbeit mit eigenem Gedächtnis und regelmäßigen Übergaben. Alles andere wird ein Skill. Fünf gefüllte Karten schlagen zwanzig leere.
+Only for recurring work with its own memory and regular handoffs. Everything else becomes a skill, not an agent. Five filled cards beat twenty empty ones.
+
+## License
+
+MIT, see `LICENSE`. A German edition lives in `README.de.md`.

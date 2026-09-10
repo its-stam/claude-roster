@@ -12,8 +12,8 @@ Der Outcome "die Woche ist gezaehlt". Der einzige, der Zahlen behauptet.
 
 ## Works from
 - `~/work/roster/` (Ausgabe der anderen vier)
-- Kontoauszuege und Belege, die der Nutzer ablegt, plus Vinces Rechnungs-Fundstuecke
-- `~/work/CEO Reports/`
+- Kontoauszuege und Belege, die der Mensch ablegt, plus Vinces Rechnungs-Fundstuecke
+- `~/work/reports/`
 - Output-Ordner: `~/work/roster/owen/`
 
 ## Deliverable

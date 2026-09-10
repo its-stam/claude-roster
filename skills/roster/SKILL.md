@@ -10,7 +10,7 @@ aliases: [/crew, /belegschaft]
 
 Ein Ziel rein, fuenf Owner arbeiten, ein Ordner raus. Kein Agent geht nach aussen.
 
-## Rollen (Charter: ~/.claude-korus/agents/roster/)
+## Rollen (Charter: `$CLAUDE_CONFIG_DIR/agents/roster/`)
 
 | Name | Owns | Zaun |
 |---|---|---|
@@ -27,10 +27,12 @@ Ein Ziel rein, fuenf Owner arbeiten, ein Ordner raus. Kein Agent geht nach ausse
 3. **Parallel starten.** Unabhaengige Stufen in einem Rutsch per Agent-Tool, abhaengige Stufen nacheinander. Jeder Agent bekommt die fuenf Felder:
    - outcome, sources, constraints, deliverable, review point
 4. **Handoff.** Ergebnis von Stufe n woertlich als Quelle in Stufe n+1 nennen, nicht nacherzaehlen.
-5. **Einsammeln.** Alles nach `~/work/roster/<owner>/`, Ordnername in der Antwort nennen.
-6. **Vorlegen.** Eine Seite: was fertig ist, was wartet, was der Nutzer abschicken muss. Nie "erledigt" ohne Dateipfad.
+5. **Cap.** Maximal 3 Runden pro Owner. Ist ein Owner nach 3 Runden nicht fertig, Uebergabe an den Menschen mit der offenen Liste, keine vierte Runde.
+6. **Abschluss-Satz je Owner.** Jede Owner-Antwort endet mit genau einem Satz im Format `VERIFIED: <was geprueft wurde>` oder `NOT VERIFIED: <was fehlt>`. Read-only-Owner (mara, owen) ergaenzen zusaetzlich den Satz "reads only, never writes to the repository or sends anything".
+7. **Einsammeln.** Alles nach `~/work/roster/<owner>/`, Ordnername in der Antwort nennen.
+8. **Vorlegen.** Eine Seite: was fertig ist, was wartet, was der Mensch abschicken muss. Nie "erledigt" ohne Dateipfad.
 
-## Auftragskarte (Vorlage)
+## Arbeitskarte (Vorlage)
 
 ```markdown
 outcome:      was am Ende fertig ist
@@ -42,11 +44,11 @@ review point: wo gestoppt und vorgelegt wird
 
 ## Harte Grenze (gilt fuer alle fuenf)
 
-Senden, Geld, Publizieren, Loeschen, Zustimmen bleibt beim Menschen. Freigabe gilt fuer genau die eine Aktion und macht nichts rueckgaengig, was schon passiert ist. Siehe `~/.claude/rules/approval.md`.
+Senden, Geld, Publizieren, Loeschen, Zustimmen bleibt beim Menschen. Freigabe gilt fuer genau die eine Aktion und macht nichts rueckgaengig, was schon passiert ist. Siehe `$CLAUDE_CONFIG_DIR/rules/approval.md`.
 
 ## Schichten
 
-Wiederkehrende Laeufe stehen in `~/.claude-korus/roster/schichten.md`. Anlegen per `/schedule`, Intervall-Lauf per `/loop`.
+Wiederkehrende Laeufe stehen in `$CLAUDE_CONFIG_DIR/roster/schichten.md`. Anlegen per `/schedule`, Intervall-Lauf per `/loop`.
 
 ## Regel fuer neue Rollen
 

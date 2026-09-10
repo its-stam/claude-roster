@@ -14,13 +14,13 @@ Was im Reel ein Claude-Projekt macht, hier als ein Befehl. Jeder Lauf startet fr
 
 | Was | Pfad |
 |---|---|
-| Master-CV | `~/work/<platform>/2026-08-10 cv-final-komplett.md` |
-| ATS-Kopf | `~/work/<platform>/2026-08-10 cv-kopf-ats.md` |
-| Belegte Bullets | `~/work/Bewerbungen/bausteine.md` |
-| Tracker | `~/work/Bewerbungen/tracker.csv` |
-| Ausgabe | `~/work/Bewerbungen/drafts/YYYY-MM-DD/` |
+| Master-CV | `~/work/bewerbungen/cv-master.md` |
+| ATS-Kopf | `~/work/bewerbungen/cv-kopf-ats.md` |
+| Belegte Bullets | `~/work/bewerbungen/bausteine.md` |
+| Tracker | `~/work/bewerbungen/tracker.csv` |
+| Ausgabe | `~/work/bewerbungen/drafts/YYYY-MM-DD/` |
 
-Positionierung ist AI Automation Specialist, nicht AI Engineer. Verifizierte Zahlen: knapp 13.000 CRM-Datensaetze, gut 9.300 eindeutige Personen. Nie aufrunden, nie umetikettieren.
+Positionierung und verifizierte Zahlen folgen der Vorgabe des Menschen. Nie aufrunden, nie umetikettieren.
 
 ## Ablauf
 
@@ -57,7 +57,7 @@ Vor dem Absenden pruefen:
 
 - Nichts behaupten, was nicht in Master-CV oder Bausteinen steht. Fehlt ein Keyword, bleibt es eine Luecke, auch wenn es die Quote druckt.
 - Sprache folgt der Anzeige. Englische Anzeige, englischer CV.
-- Kein Formular ausfuellen, nichts hochladen, nichts absenden. Der Draft liegt im Ordner, der Nutzer schickt.
+- Kein Formular ausfuellen, nichts hochladen, nichts absenden. Der Draft liegt im Ordner, der Mensch schickt.
 - Trefferquote unter etwa der Haelfte heisst, die Stelle passt nicht. Sagen statt schoenrechnen.
 - Personendaten bleiben lokal, nie in ein Repo.
 

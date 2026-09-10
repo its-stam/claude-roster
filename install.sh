@@ -23,7 +23,7 @@ link "$REPO/agents/roster" "$CFG/agents/roster"
 link "$REPO/skills/roster" "$CFG/skills/roster"
 link "$REPO/roster"        "$CFG/roster"
 
-WORK="${ROSTER_WORKDIR:-$HOME/work/Work/ROSTER}"
+WORK="${ROSTER_WORKDIR:-$HOME/work/roster}"
 mkdir -p "$WORK"/{mara,cole,rina,vince,owen,inbox}
 echo "Arbeitsordner: $WORK"
 echo "Fertig. In Claude Code pruefen: /roster"

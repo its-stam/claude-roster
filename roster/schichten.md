@@ -18,8 +18,8 @@ statt die Liste von gestern zu wiederholen.
 ## Schicht 2 — Lead-Lauf, Mo und Do 09:00 (Mara)
 
 ```
-Suche neue <platform>-Jobs und Direktkunden-Leads passend zur Positionierung
-AI Automation Specialist. Tabelle nach ~/work/roster/mara/ als CSV,
+Suche neue Freelance-Jobs und Direktkunden-Leads passend zur eigenen
+Positionierung. Tabelle nach ~/work/roster/mara/ als CSV,
 jede Zeile mit Quelle und Link. Gegen die letzten drei Listen dedupen.
 Niemanden kontaktieren.
 ```

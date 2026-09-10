@@ -1,15 +1,15 @@
 # Roster — fuenf Owner, ein Abend Setup
 
-Stand 27.08.2026. Vorbild: Argona0x-Post vom 24.08.2026 ("Grok Bot mit Kimi K3"), hier auf Claude Code umgebaut. Ziel: Einkommensaufbau (<platform> + <product>), nicht Spielerei.
+Stand 27.08.2026. Vorbild: ein X-Post ueber eine Multi-Agent-Belegschaft mit austauschbarer Engine, hier auf Claude Code umgebaut. Ziel: Einkommensaufbau, nicht Spielerei.
 
 ## Was der Post wollte, was hier steht
 
 | Post | Claude Code | Ort |
 |---|---|---|
-| Worker hiren | Subagent-Datei | `~/.claude-korus/agents/roster/*.md` |
+| Personal hiren | Subagent-Datei | `$CLAUDE_CONFIG_DIR/agents/roster/*.md` |
 | Charter statt To-do | Agent-Body: Owns / Works from / Deliverable / Never | dieselbe Datei |
 | Logins einmal geben | MCP-Server, sonst Chrome-Extension mit deiner Session | `settings.json`, claude-in-chrome |
-| Engine waehlen (Kimi K3) | Env-Swap fuer Worker-Laeufe | `~/.claude-korus/roster/engine-kimi-k3.sh` |
+| Engine waehlen | Env-Swap fuer Subagent-Laeufe | `$CLAUDE_CONFIG_DIR/roster/engine-swap.sh` |
 | Nach Ownership hiren | fuenf Rollen, ein Outcome je Rolle | Tabelle unten |
 | Handoff untereinander | Agent-Tool + Routing-Zeile in jeder Charter | `/roster` |
 | Schicht | `/schedule` (Cron) und `/loop` | `schichten.md` |
@@ -19,13 +19,17 @@ Stand 27.08.2026. Vorbild: Argona0x-Post vom 24.08.2026 ("Grok Bot mit Kimi K3")
 
 | Name | Owns | Output-Ordner | Zaun |
 |---|---|---|---|
-| Mara | Nachfrage finden: <platform>-Jobs, Direktkunden, <product>-Abnehmer | `~/work/roster/mara/` | kontaktiert nie |
-| Cole | Ansprache schreiben: Proposals, Kaltmails, <partner>/<partner> | `.../cole/` | sendet nie |
+| Mara | Nachfrage finden: Jobs, Direktkunden, Abnehmer | `~/work/roster/mara/` | kontaktiert nie |
+| Cole | Ansprache schreiben: Proposals, Kaltmails, Partner-Nachrichten | `.../cole/` | sendet nie |
 | Rina | Sichtbares: Case Studies, Portfolio, Diagramme | `.../rina/` | publiziert nie |
 | Vince | Posteingang, Entwuerfe, Nachfass-Liste | `.../vince/`, `.../inbox/` | sendet und loescht nie |
 | Owen | Wochenzahlen, Abos, Pipeline | `.../owen/` | zahlt und kuendigt nie |
 
 Routing-Zeile steht am Ende jeder Charter, deshalb muss nichts verdrahtet werden: Namen zu Mara, Anschreiben zu Cole, Bilder zu Rina, Antworten zu Vince, Zahlen zu Owen.
+
+## Routing-Marker
+
+Jede Charter endet mit genau einer Zeile, die mit diesem Marker beginnt: `Was nicht mir gehoert, geht an den Owner:`
 
 ## Charter gegen Nachricht
 
@@ -41,10 +45,10 @@ Senden, Geld, Publizieren, Loeschen, Zustimmen. Bei Claude Code kommt das per Pe
 
 ## Was Claude anders macht als der Post
 
-- Kein dauerhaft laufender geteilter Rechner mit 50 Workern und root. Subagenten leben in der Session, Dauerlaeufe kommen ueber `/schedule` (Cloud-Agent auf Cron) oder `/loop`.
+- Kein dauerhaft laufender geteilter Rechner mit vielen Instanzen und root. Subagenten leben in der Session, Dauerlaeufe kommen ueber `/schedule` (Cloud-Agent auf Cron) oder `/loop`.
 - Kein Login-Takeover-Fenster. Zugriff laeuft ueber MCP-Server oder die Chrome-Extension in deinem eigenen Profil. Passwoerter tippt weiter der Mensch, nichts davon in den Chat.
 - Handoff ist echt, aber orchestriert: Claude verteilt, die fuenf antworten. Keine Agenten, die sich nachts von selber anschreiben.
-- 33 versteckte Engines und root-Shell im Post sind Teardown-Erzaehlung, kein Beleg. Ignoriert.
+- Versteckte Engines und root-Shell im Vorbild-Post sind Teardown-Erzaehlung, kein Beleg. Ignoriert.
 
 ## Erweitern
 
